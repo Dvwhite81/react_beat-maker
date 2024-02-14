@@ -3,29 +3,40 @@ import INSTRUMENTS from './scripts/instruments';
 import Board from './components/Board';
 import './App.css';
 
+let loopInterval;
+
 function App() {
   const [instruments, setInstruments] = useState([]);
+  const [tempo, setTempo] = useState(500);
   const [currentBeat, setCurrentBeat] = useState(1);
   const [numBeats, setNumBeats] = useState(4);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [btnText, setBtnText] = useState('Play');
 
-  const play = () => {
-    for (let i = 1; i <= numBeats; i++) {
-      setTimeout(() => {
-        console.log('i:', i);
-        setCurrentBeat(i);
-      }, 1000 * i);
-    }
+  let index = 1;
+
+  const playLoop = () => {
+    loopInterval = setInterval(() => {
+      setCurrentBeat((index % numBeats) + 1);
+      index++;
+    }, tempo * index);
   };
 
   const stop = () => {
+    setIsPlaying(false);
+    clearInterval(loopInterval);
     setCurrentBeat(1);
   };
 
-  const toggleIsPlaying = () => {
-    if (isPlaying) stop();
-    else play();
-    setIsPlaying((prev) => !prev);
+  const togglePlaying = () => {
+    if (isPlaying) {
+      stop();
+      setBtnText('Play');
+    } else {
+      setIsPlaying(true);
+      playLoop();
+      setBtnText('Stop');
+    }
   };
 
   return (
@@ -67,11 +78,14 @@ function App() {
         <button
           type="button"
           id="play-pause-button"
-          onClick={toggleIsPlaying}
+          onClick={() => {
+            togglePlaying();
+          }}
         >
-          {isPlaying ? 'Pause' : 'Play'}
+          {btnText}
         </button>
       </div>
+      <div className="info">Current Beat: {currentBeat}</div>
     </div>
   );
 }
