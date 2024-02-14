@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Square from './Square';
 
-function Track({ choice, currentBeat, numBeats, isPlaying }) {
+function Track({ choice, currentBeat, totalBeats, isPlaying }) {
   const { name, displayName, options } = choice;
   const [soundToPlay, setSoundToPlay] = useState(options[0].soundSrc);
 
   const squares = getSquares(
     soundToPlay,
-    numBeats,
+    totalBeats,
     currentBeat,
     isPlaying,
   );
@@ -34,13 +34,13 @@ function Track({ choice, currentBeat, numBeats, isPlaying }) {
 
 const getSquares = (
   soundToPlay,
-  numBeats,
+  totalBeats,
   currentBeat,
   isPlaying,
 ) => {
   const squares = [];
 
-  for (let i = 1; i <= numBeats; i++) {
+  for (let i = 1; i <= totalBeats; i++) {
     const square = (
       <Square
         key={i}

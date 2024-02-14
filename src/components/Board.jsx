@@ -1,6 +1,6 @@
 import Track from './Track';
 
-function Board({ instrument, currentBeat, numBeats, isPlaying }) {
+function Board({ instrument, currentBeat, totalBeats, isPlaying }) {
   const { type, displayName, choices } = instrument;
 
   return (
@@ -11,7 +11,7 @@ function Board({ instrument, currentBeat, numBeats, isPlaying }) {
           key={c.name}
           choice={c}
           currentBeat={currentBeat}
-          numBeats={numBeats}
+          totalBeats={totalBeats}
           isPlaying={isPlaying}
         />
       ))}
