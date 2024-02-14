@@ -2,16 +2,18 @@ import { useState } from 'react';
 import INSTRUMENTS from './scripts/instruments';
 import Board from './components/Board';
 import './App.css';
+import { isValidNum, isValidTempo } from './scripts/helpers';
 
 let loopInterval;
 
 function App() {
   const [instruments, setInstruments] = useState([]);
   const [currentBeat, setCurrentBeat] = useState(1);
+  const [numMeasures, setNumMeasures] = useState(2);
   const [numBeats, setNumBeats] = useState(4);
   const [beatDivision, setBeatDivision] = useState(4);
   const [totalBeats, setTotalBeats] = useState(
-    numBeats * beatDivision,
+    numMeasures * numBeats * beatDivision,
   );
   const [tempo, setTempo] = useState(120);
   const [timing, setTiming] = useState(60000 / tempo / beatDivision);
@@ -31,7 +33,6 @@ function App() {
   };
 
   const stop = () => {
-    console.log('stop');
     setIsPlaying(false);
     setBtnText('Play');
     clearInterval(loopInterval);
@@ -49,41 +50,43 @@ function App() {
 
   const updateTempo = (value) => {
     const newTempo = parseInt(value, 10);
-    if (newTempo <= 0 || newTempo >= 300 || Number.isNaN(newTempo)) {
-      return;
-    }
+    if (!isValidTempo(newTempo)) return;
+
     setTempo(newTempo);
     setTiming(60000 / newTempo / beatDivision);
-    stop();
+
+    if (isPlaying) stop();
+  };
+
+  const updateNumMeasures = (value) => {
+    const newNumMeasures = parseInt(value, 10);
+
+    if (!isValidNum(newNumMeasures)) return;
+
+    setNumMeasures(newNumMeasures);
+    setTotalBeats(newNumMeasures * numBeats * beatDivision);
+    if (isPlaying) stop();
   };
 
   const updateNumBeats = (value) => {
     const newNumBeats = parseInt(value, 10);
-    console.log('newNumBeats:', newNumBeats);
-    if (
-      newNumBeats <= 0 ||
-      newNumBeats > 8 ||
-      Number.isNaN(newNumBeats)
-    ) {
-      return;
-    }
+
+    if (!isValidNum(newNumBeats)) return;
+
     setNumBeats(newNumBeats);
-    setTotalBeats(newNumBeats * beatDivision);
-    stop();
+    setTotalBeats(numMeasures * newNumBeats * beatDivision);
+    if (isPlaying) stop();
   };
 
   const updateBeatDivision = (value) => {
     const newBeatDivision = parseInt(value, 10);
-    if (
-      newBeatDivision <= 0 ||
-      newBeatDivision > 4 ||
-      Number.isNaN(newBeatDivision)
-    ) {
-      return;
-    }
+
+    if (!isValidNum(newBeatDivision)) return;
+
     setBeatDivision(newBeatDivision);
+    setTotalBeats(numMeasures * numBeats * newBeatDivision);
     setTiming(60000 / tempo / newBeatDivision);
-    stop();
+    if (isPlaying) stop();
   };
 
   return (
@@ -98,6 +101,15 @@ function App() {
             onChange={({ target }) => updateTempo(target.value)}
           />
         </label>
+        <label htmlFor="numMeasures-input">
+          Measures:{' '}
+          <input
+            type="number"
+            id="numMeasures-input"
+            value={numMeasures}
+            onChange={({ target }) => updateNumMeasures(target.value)}
+          />
+        </label>
         <label htmlFor="numBeats-input">
           Beats:{' '}
           <input
@@ -107,11 +119,11 @@ function App() {
             onChange={({ target }) => updateNumBeats(target.value)}
           />
         </label>
-        <label htmlFor="beat-division-input">
+        <label htmlFor="beatDivision-input">
           Beat Division:{' '}
           <input
             type="number"
-            id="beat-division-input"
+            id="beatDivision-input"
             value={beatDivision}
             onChange={({ target }) =>
               updateBeatDivision(target.value)
