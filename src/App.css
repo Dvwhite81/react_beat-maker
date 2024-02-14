@@ -1,0 +1,69 @@
+#main-container {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#settings,
+#select-instruments,
+#play-btn-container {
+  align-items: center;
+  display: flex;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+#settings,
+#play-btn-container {
+  background-color: green;
+  justify-content: center;
+}
+
+#select-instruments {
+  background-color: orange;
+  justify-content: space-evenly;
+}
+
+button {
+  padding: 0.5rem 1rem;
+}
+
+#all-instruments {
+  background-color: blue;
+}
+
+.board,
+.track,
+.square {
+  border: 1px solid;
+}
+
+.board-title {
+  text-align: center;
+}
+
+.track,
+.track-squares {
+  align-items: center;
+  background-color: lightblue;
+  display: flex;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.square {
+  background-color: crimson;
+  height: var(--square-size);
+  opacity: 0.3;
+  width: var(--square-size);
+}
+
+.square-selected {
+  opacity: 1;
+}
+
+.square-active {
+  background-color: white;
+  opacity: 1;
+}

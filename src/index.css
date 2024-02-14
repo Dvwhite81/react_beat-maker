@@ -9,7 +9,7 @@
 }
 
 /* Main container */
-#container {
+#root {
 	background-color: burlywood;
 	display: flex;
 	height: 100vh;
