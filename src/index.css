@@ -1,96 +1,84 @@
 :root {
-  --square-size: calc(10vh - 2px);
+  --small-square-size: 5vh;
+  --large-square-size: 10vh;
+  --navbar-height: 10vh;
+  --main-height: 80vh;
+  --light-blue-bg: #59CEF7;
+  --dark-blue-bg: #597FF7;
+  --light-orange-bg: #f78259;
+  --dark-orange-bg: #F55D28;
+  --green-bg: #7FF759;
+  --purple-bg: #D159F7;
 }
 
 * {
   box-sizing: border-box;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
   margin: 0;
   padding: 0;
 }
 
-/* Main container */
 #root {
-	background-color: burlywood;
+  background: linear-gradient(
+    to bottom,
+    #9bc5c3,
+    #616161
+  );
 	display: flex;
 	height: 100vh;
 	width: 100vw;
 }
 
-/* Start Modal and Skip Button */
-#open-modal-btn {
-  background-color: sienna;
-  border: none;
-  border-radius: 10px;
-  color: bisque;
-  cursor: pointer;
-  font-weight: bold;
-  left: 50%;
-  padding: 5px 10px;
+.tooltip .tooltiptext {
+  background-color: #000;
+  border-radius: 6px;
+  color: #fff;
+  padding: 0.5rem;
   position: absolute;
-  top: 0.5rem;
-  transform: translate(-50%, 0%);
-}
-
-#open-modal-btn:hover {
-  background-color: bisque;
-  color: sienna;
-}
-
-#myModal {
-	background-color: sienna;
-  border-radius: 10px;
-  color: bisque;
-  display: none;
-  height: 50%;
-  left: 50%;
-  overflow: auto;
-  padding: 1rem;
-  position: fixed;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 50%;
+  text-align: center;
+  visibility: hidden;
+  width: fit-content;
   z-index: 1;
 }
 
-#modal-content {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	text-align: center;
-	width: 100%;
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
-#close-modal {
-	color: bisque;
-	font-size: 28px;
-	font-weight: bold;
-	position: absolute;
-	top: 0;
-	right: 5px;
+.icon {
+  cursor: pointer;
+  height: 100%;
 }
 
-#close-modal:hover,
-#close-modal:focus {
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
+.hidden {
+  display: none!important;
 }
 
-#modal-submit-btn {
-	background-color: bisque;
-  border: 1px solid bisque;
-	border-radius: 10px;
-	color: sienna;
-	cursor: pointer;
-	font-weight: bold;
-	margin: 0 auto;
-	padding: 5px 10px;
-	width: fit-content;
+@font-face {
+  font-family: 'roboto';
+  src: url('../src/assets/fonts/Roboto-Thin.ttf');
+  font-weight: 200;
+  font-display: swap;
 }
 
-#modal-submit-btn:hover {
-  background-color: sienna;
-  color: bisque;
+@font-face {
+  font-family: 'roboto';
+  src: url('../src/assets/fonts/Roboto-Regular.ttf');
+  font-weight: 400;
+  font-display: swap;
 }
-/* End Modal */
+
+@font-face {
+  font-family: 'roboto';
+  src: url('../src/assets/fonts/Roboto-Medium.ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'roboto';
+  src: url('../src/assets/fonts/Roboto-Bold.ttf');
+  font-weight: 900;
+  font-display: swap;
+}
