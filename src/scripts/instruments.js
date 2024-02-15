@@ -353,7 +353,224 @@ const INSTRUMENTS = [
   {
     type: 'bass',
     displayName: 'Bass',
-    choices: [],
+    choices: [
+      {
+        name: 'octave1',
+        displayName: 'Octave 1',
+        options: [
+          {
+            name: 'C1',
+            displayName: 'C 1',
+          },
+          {
+            name: 'C#1',
+            displayName: 'C# 1',
+          },
+          {
+            name: 'D1',
+            displayName: 'D 1',
+          },
+          {
+            name: 'D#1',
+            displayName: 'D# 1',
+          },
+          {
+            name: 'E1',
+            displayName: 'E 1',
+          },
+          {
+            name: 'F1',
+            displayName: 'F 1',
+          },
+          {
+            name: 'F#1',
+            displayName: 'F# 1',
+          },
+          {
+            name: 'G1',
+            displayName: 'G 1',
+          },
+          {
+            name: 'G#1',
+            displayName: 'G# 1',
+          },
+          {
+            name: 'A1',
+            displayName: 'A 1',
+          },
+          {
+            name: 'A#1',
+            displayName: 'A# 1',
+          },
+          {
+            name: 'B1',
+            displayName: 'B 1',
+          },
+        ],
+      },
+      {
+        name: 'octave2',
+        displayName: 'Octave 2',
+        options: [
+          {
+            name: 'C2',
+            displayName: 'C 2',
+          },
+          {
+            name: 'C#2',
+            displayName: 'C# 2',
+          },
+          {
+            name: 'D2',
+            displayName: 'D 2',
+          },
+          {
+            name: 'D#2',
+            displayName: 'D# 2',
+          },
+          {
+            name: 'E2',
+            displayName: 'E 2',
+          },
+          {
+            name: 'F2',
+            displayName: 'F 2',
+          },
+          {
+            name: 'F#2',
+            displayName: 'F# 2',
+          },
+          {
+            name: 'G2',
+            displayName: 'G 2',
+          },
+          {
+            name: 'G#2',
+            displayName: 'G# 2',
+          },
+          {
+            name: 'A2',
+            displayName: 'A 2',
+          },
+          {
+            name: 'A#2',
+            displayName: 'A# 2',
+          },
+          {
+            name: 'B2',
+            displayName: 'B 2',
+          },
+        ],
+      },
+      {
+        name: 'octave3',
+        displayName: 'Octave 3',
+        options: [
+          {
+            name: 'C3',
+            displayName: 'C 3',
+          },
+          {
+            name: 'C#3',
+            displayName: 'C# 3',
+          },
+          {
+            name: 'D3',
+            displayName: 'D 3',
+          },
+          {
+            name: 'D#3',
+            displayName: 'D# 3',
+          },
+          {
+            name: 'E3',
+            displayName: 'E 3',
+          },
+          {
+            name: 'F3',
+            displayName: 'F 3',
+          },
+          {
+            name: 'F#3',
+            displayName: 'F# 3',
+          },
+          {
+            name: 'G3',
+            displayName: 'G 3',
+          },
+          {
+            name: 'G#3',
+            displayName: 'G# 3',
+          },
+          {
+            name: 'A3',
+            displayName: 'A 3',
+          },
+          {
+            name: 'A#3',
+            displayName: 'A# 3',
+          },
+          {
+            name: 'B3',
+            displayName: 'B 3',
+          },
+        ],
+      },
+      {
+        name: 'octave4',
+        displayName: 'Octave 4',
+        options: [
+          {
+            name: 'C4',
+            displayName: 'C 4',
+          },
+          {
+            name: 'C#4',
+            displayName: 'C# 4',
+          },
+          {
+            name: 'D4',
+            displayName: 'D 4',
+          },
+          {
+            name: 'D#4',
+            displayName: 'D# 4',
+          },
+          {
+            name: 'E4',
+            displayName: 'E 4',
+          },
+          {
+            name: 'F4',
+            displayName: 'F 4',
+          },
+          {
+            name: 'F#4',
+            displayName: 'F# 4',
+          },
+          {
+            name: 'G4',
+            displayName: 'G 4',
+          },
+          {
+            name: 'G#4',
+            displayName: 'G# 4',
+          },
+          {
+            name: 'A4',
+            displayName: 'A 4',
+          },
+          {
+            name: 'A#4',
+            displayName: 'A# 4',
+          },
+          {
+            name: 'B4',
+            displayName: 'B 4',
+          },
+        ],
+      },
+    ],
   },
 ];
 

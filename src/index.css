@@ -9,6 +9,11 @@
   --dark-orange-bg: #F55D28;
   --green-bg: #7FF759;
   --purple-bg: #D159F7;
+  --gradient-bg: linear-gradient(
+    to bottom,
+    #9bc5c3,
+    #616161
+  );
 }
 
 * {
@@ -20,11 +25,7 @@
 }
 
 #root {
-  background: linear-gradient(
-    to bottom,
-    #9bc5c3,
-    #616161
-  );
+  background: var(--gradient-bg);
 	display: flex;
 	height: 100vh;
 	width: 100vw;

@@ -2,8 +2,7 @@ import { useState } from 'react';
 import './BoardTitle.css';
 
 function BoardTitle({
-  type,
-  displayName,
+  instrument,
   toggleSectionMinimized,
   toggleSectionSelected,
 }) {
@@ -11,6 +10,8 @@ function BoardTitle({
   const [minusClass, setMinusClass] = useState('');
   const [expandClass, setExpandClass] = useState('');
   const [collapseClass, setCollapseClass] = useState('hidden');
+
+  const { type, displayName } = instrument;
 
   const toggleMinimizeIcon = () => {
     if (addClass === 'hidden') {

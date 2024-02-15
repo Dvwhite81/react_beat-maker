@@ -17,7 +17,7 @@ function InstrumentSection({
   const [selectedClass, setSelectedClass] = useState('');
   const [hiddenClass, setHiddenClass] = useState('');
 
-  const { type, displayName, choices } = instrument;
+  const { type } = instrument;
   const leftPosition = `${index * 30}vw`;
 
   const toggleSectionMinimized = () => {
@@ -53,14 +53,12 @@ function InstrumentSection({
       style={{ left: leftPosition }}
     >
       <BoardTitle
-        type={type}
-        displayName={displayName}
+        instrument={instrument}
         toggleSectionMinimized={toggleSectionMinimized}
         toggleSectionSelected={toggleSectionSelected}
       />
       <Board
-        type={type}
-        choices={choices}
+        instrument={instrument}
         currentBeat={currentBeat}
         totalBeats={totalBeats}
         isPlaying={isPlaying}
