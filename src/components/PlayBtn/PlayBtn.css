@@ -1,0 +1,25 @@
+#play-btn-container {
+  align-items: center;
+  background-color: var(--dark-orange-bg);
+  display: flex;
+  height: var(--navbar-height);
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+}
+
+#play-stop-btn {
+  align-items: center;
+  background-color: black;
+  border-radius: 50%;
+  color: whitesmoke;
+  display: flex;
+  height: 7vh;
+  justify-content: center;
+  width: 7vh;
+}
+
+#play-stop-btn:hover {
+  background-color: whitesmoke;
+  color: black;
+}

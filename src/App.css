@@ -4,57 +4,18 @@
   width: 100%;
 }
 
-#select-instruments {
-  align-items: center;
-  display: flex;
-  margin: 1rem auto;
-  width: 100%;
-}
-
-#select-instruments {
-  background-color: orange;
-  justify-content: space-evenly;
-}
-
 button {
-  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
-#all-instruments {
-  background-color: blue;
-}
-
-.board,
-.track,
-.square {
-  border: 1px solid;
-}
-
-.board-title {
-  text-align: center;
-}
-
-.track,
-.track-squares {
-  align-items: center;
-  background-color: lightblue;
+.btn {
+  background: gainsboro;
+  border: none;
   display: flex;
-  padding: 0.5rem;
-  text-align: center;
+  height: 8vh;
+  width: 8vh;
 }
 
-.square {
-  background-color: crimson;
-  height: var(--square-size);
-  opacity: 0.3;
-  width: var(--square-size);
-}
-
-.square-selected {
-  opacity: 1;
-}
-
-.square-active {
-  background-color: white;
-  opacity: 1;
+.btn .icon:hover {
+  transform: scale(1.2);
 }

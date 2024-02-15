@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import INSTRUMENTS from './scripts/instruments';
-import Board from './components/Board';
+import Settings from './components/Settings/Settings';
+import PlayBtn from './components/PlayBtn/PlayBtn';
 import './App.css';
-import Settings from './components/Settings';
-import PlayBtn from './components/PlayBtn';
+import AllSections from './components/AllSections/AllSections';
 
 let loopInterval;
 
 function App() {
-  const [instruments, setInstruments] = useState([]);
   const [currentBeat, setCurrentBeat] = useState(1);
   const [numMeasures, setNumMeasures] = useState(2);
   const [numBeats, setNumBeats] = useState(4);
@@ -53,28 +51,11 @@ function App() {
         setTiming={setTiming}
         stop={stop}
       />
-      <div id="select-instruments">
-        {INSTRUMENTS.map((i) => (
-          <button
-            key={i.type}
-            type="button"
-            onClick={() => setInstruments(instruments.concat(i))}
-          >
-            {i.displayName}
-          </button>
-        ))}
-      </div>
-      <div id="all-instruments">
-        {instruments.map((i) => (
-          <Board
-            key={i.type}
-            instrument={i}
-            currentBeat={currentBeat}
-            totalBeats={totalBeats}
-            isPlaying={isPlaying}
-          />
-        ))}
-      </div>
+      <AllSections
+        isPlaying={isPlaying}
+        currentBeat={currentBeat}
+        totalBeats={totalBeats}
+      />
       <PlayBtn
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}

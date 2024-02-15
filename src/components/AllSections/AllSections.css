@@ -1,0 +1,14 @@
+#all-instruments {
+  display: grid;
+  /*
+  grid-template-columns: repeat(2, 1fr);
+  */
+  grid-template-rows: repeat(2, 1fr);
+  height: 80vh;
+  margin: auto;
+  width: 100%;
+}
+
+#all-instruments.single-view {
+  grid-template-rows: 1fr!important;
+}

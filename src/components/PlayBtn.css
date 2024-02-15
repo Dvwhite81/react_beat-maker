@@ -1,9 +1,0 @@
-#play-btn-container {
-  align-items: center;
-  background-color: var(--dark-orange-bg);
-  display: flex;
-  height: var(--navbar-height);
-  justify-content: center;
-  margin: auto;
-  width: 100%;
-}

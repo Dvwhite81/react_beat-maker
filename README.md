@@ -1,1 +1,1 @@
-# battleship-react
+# react_beat-maker

@@ -1,0 +1,28 @@
+.instrument-section {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+}
+
+.selected-section.instrument-section {
+  max-height: 80vh;
+  z-index: 1;
+}
+
+.minimized-section.instrument-section {
+  bottom: var(--navbar-height);
+  height: 4vh;
+  position: absolute;
+  width: 30vw;
+}
+
+.instrument-section * {
+  font-size: large;
+}
+
+.instrument-section .btn {
+  background-color: var(--light-orange-bg);
+  height: 100%;
+}
