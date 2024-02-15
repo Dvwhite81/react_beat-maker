@@ -86,3 +86,8 @@ button.select-option-btn:hover {
   background-color: whitesmoke;
   color: black;
 }
+
+.track-control .icon {
+  height: 70%;
+  margin: auto;
+}
