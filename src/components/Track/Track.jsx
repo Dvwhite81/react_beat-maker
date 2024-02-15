@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Square from '../Square/Square';
+import { getSquares } from '../../scripts/helpers';
 import './Track.css';
 
 function Track({ choice, currentBeat, totalBeats, isPlaying }) {
@@ -20,8 +20,18 @@ function Track({ choice, currentBeat, totalBeats, isPlaying }) {
     toggleSelectOpen();
   };
 
+  const playSound = () => {
+    // eslint-disable-next-line no-undef
+    const sound = new Audio();
+    sound.src = soundToPlay;
+    sound.play();
+  };
+
+  const isTone = false;
+
   const squares = getSquares(
-    soundToPlay,
+    isTone,
+    playSound,
     totalBeats,
     currentBeat,
     isPlaying,
@@ -58,28 +68,5 @@ function Track({ choice, currentBeat, totalBeats, isPlaying }) {
     </div>
   );
 }
-
-const getSquares = (
-  soundToPlay,
-  totalBeats,
-  currentBeat,
-  isPlaying,
-) => {
-  const squares = [];
-
-  for (let i = 1; i <= totalBeats; i++) {
-    const square = (
-      <Square
-        key={i}
-        index={i}
-        soundToPlay={soundToPlay}
-        currentBeat={currentBeat}
-        isPlaying={isPlaying}
-      />
-    );
-    squares.push(square);
-  }
-  return squares;
-};
 
 export default Track;

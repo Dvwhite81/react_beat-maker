@@ -3,7 +3,7 @@
   /*
   grid-template-columns: repeat(2, 1fr);
   */
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 40vh);
   height: 80vh;
   margin: auto;
   width: 100%;

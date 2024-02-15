@@ -1,35 +1,15 @@
-import { useState } from 'react';
 import ModalToneSection from './ModalToneSection';
 import './ToneModal.css';
 
 function ToneModal({
   choices,
   displayClass,
-  createToneTrack,
-  setToneTracks,
   closeModal,
+  useFlats,
+  toggleFlats,
+  selectedTones,
+  toggleSelected,
 }) {
-  const [selectedTones, setSelectedTones] = useState([]);
-
-  const toggleSelected = (option) => {
-    if (selectedTones.includes(option)) {
-      setSelectedTones(selectedTones.filter((t) => t !== option));
-    } else {
-      setSelectedTones(selectedTones.concat(option));
-    }
-  };
-
-  const handleSubmit = () => {
-    const newTracks = [];
-    selectedTones.forEach((option) => {
-      const toneTrack = createToneTrack(option);
-      newTracks.push(toneTrack);
-    });
-    setToneTracks(newTracks);
-    setSelectedTones([]);
-    closeModal();
-  };
-
   return (
     <div id="tone-modal" className={`modal${displayClass}`}>
       <button
@@ -39,6 +19,13 @@ function ToneModal({
       >
         x
       </button>
+      <button
+        type="button"
+        className="modal-use-flats-btn"
+        onClick={toggleFlats}
+      >
+        {useFlats ? 'Use Sharps' : 'Use Flats'}
+      </button>
       <div className="modal-content">
         <p className="modal-content-label">Select tones:</p>
         <div className="modal-content-div">
@@ -46,7 +33,9 @@ function ToneModal({
             <ModalToneSection
               key={c.name}
               choice={c}
+              selectedTones={selectedTones}
               toggleSelected={toggleSelected}
+              useFlats={useFlats}
             />
           ))}
         </div>
@@ -54,7 +43,7 @@ function ToneModal({
       <button
         type="button"
         className="modal-submit"
-        onClick={handleSubmit}
+        onClick={closeModal}
       >
         Add Tones
       </button>

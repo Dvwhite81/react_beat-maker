@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import TrackToneBtn from '../Tones/TrackToneBtn';
+import TrackToneBtn from '../ToneTrack/TrackToneBtn';
 import Track from '../Track/Track';
-import ToneModal from '../Tones/ToneModal';
+import ToneModal from '../ToneModal/ToneModal';
 import './Board.css';
-import ToneTrack from '../Tones/ToneTrack';
+import ToneTrack from '../ToneTrack/ToneTrack';
 
 function Board({ instrument, currentBeat, totalBeats, isPlaying }) {
   const [displayClass, setDisplayClass] = useState(' hidden');
-  const [toneTracks, setToneTracks] = useState([]);
+  const [selectedTones, setSelectedTones] = useState([]);
+  const [useFlats, setUseFlats] = useState(false);
 
   const { type, choices } = instrument;
 
@@ -19,17 +20,16 @@ function Board({ instrument, currentBeat, totalBeats, isPlaying }) {
     setDisplayClass(' hidden');
   };
 
-  const createToneTrack = (option) => {
-    console.log('addToneTrack option:', option);
-    return (
-      <ToneTrack
-        key={option.name}
-        option={option}
-        currentBeat={currentBeat}
-        totalBeats={totalBeats}
-        isPlaying={isPlaying}
-      />
-    );
+  const toggleFlats = () => {
+    setUseFlats((prev) => !prev);
+  };
+
+  const toggleSelected = (option) => {
+    if (selectedTones.includes(option)) {
+      setSelectedTones(selectedTones.filter((t) => t !== option));
+    } else {
+      setSelectedTones(selectedTones.concat(option));
+    }
   };
 
   return (
@@ -40,11 +40,23 @@ function Board({ instrument, currentBeat, totalBeats, isPlaying }) {
           <ToneModal
             choices={choices}
             displayClass={displayClass}
-            createToneTrack={createToneTrack}
-            setToneTracks={setToneTracks}
             closeModal={closeModal}
+            useFlats={useFlats}
+            toggleFlats={toggleFlats}
+            selectedTones={selectedTones}
+            toggleSelected={toggleSelected}
           />
-          {toneTracks}
+          {selectedTones.map((o) => (
+            <ToneTrack
+              key={o.name}
+              option={o}
+              currentBeat={currentBeat}
+              totalBeats={totalBeats}
+              isPlaying={isPlaying}
+              useFlats={useFlats}
+              toggleSelected={toggleSelected}
+            />
+          ))}
         </>
       ) : (
         choices.map((c) => (

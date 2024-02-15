@@ -1,6 +1,11 @@
 import ModalToneBtn from './ModalToneBtn';
 
-function ModalToneSection({ choice, toggleSelected }) {
+function ModalToneSection({
+  choice,
+  selectedTones,
+  toggleSelected,
+  useFlats,
+}) {
   const { displayName, options } = choice;
 
   return (
@@ -11,7 +16,9 @@ function ModalToneSection({ choice, toggleSelected }) {
           <ModalToneBtn
             key={o.name}
             option={o}
+            selectedTones={selectedTones}
             toggleSelected={toggleSelected}
+            useFlats={useFlats}
           />
         ))}
       </div>

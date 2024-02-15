@@ -2,6 +2,8 @@
   background-color: lightgray;
   display: flex;
   flex-direction: column;
+  height: fit-content;
+  max-height: 100%;
   margin: auto;
   width: 90%;
 }

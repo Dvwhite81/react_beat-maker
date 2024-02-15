@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Square.css';
 
-function Square({ index, soundToPlay, currentBeat, isPlaying }) {
+function Square({ index, playSound, currentBeat, isPlaying }) {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedClass, setSelectedClass] = useState('');
   const [activeClass, setActiveClass] = useState('');
@@ -20,13 +20,11 @@ function Square({ index, soundToPlay, currentBeat, isPlaying }) {
     if (isPlaying && isSelected && soundShouldPlay) {
       setActiveClass('square-active');
       // eslint-disable-next-line no-undef
-      const sound = new Audio();
-      sound.src = soundToPlay;
-      sound.play();
+      playSound();
     } else {
       setActiveClass('');
     }
-  }, [currentBeat, index, isPlaying, isSelected, soundToPlay]);
+  }, [currentBeat, index, isPlaying, isSelected, playSound]);
 
   const handleClick = () => {
     setIsSelected((prev) => !prev);

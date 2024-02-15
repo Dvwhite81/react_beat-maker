@@ -1,3 +1,6 @@
+import Square from '../components/Square/Square';
+import ToneSquare from '../components/ToneTrack/ToneSquare';
+
 const isValidTempo = (tempo) => {
   if (tempo <= 0 || tempo >= 300 || Number.isNaN(tempo)) {
     return false;
@@ -12,4 +15,36 @@ const isValidNum = (num) => {
   return true;
 };
 
-export { isValidNum, isValidTempo };
+const getSquares = (
+  isTone,
+  playSound,
+  totalBeats,
+  currentBeat,
+  isPlaying,
+) => {
+  const squares = [];
+
+  for (let i = 1; i <= totalBeats; i++) {
+    const square = isTone ? (
+      <ToneSquare
+        key={i}
+        index={i}
+        playSound={playSound}
+        currentBeat={currentBeat}
+        isPlaying={isPlaying}
+      />
+    ) : (
+      <Square
+        key={i}
+        index={i}
+        playSound={playSound}
+        currentBeat={currentBeat}
+        isPlaying={isPlaying}
+      />
+    );
+    squares.push(square);
+  }
+  return squares;
+};
+
+export { getSquares, isValidNum, isValidTempo };
