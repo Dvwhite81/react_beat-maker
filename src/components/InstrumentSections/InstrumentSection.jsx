@@ -32,9 +32,11 @@ function InstrumentSection({
   return (
     <div
       id={`${type}-section`}
-      className={`instrument-section ${
-        isMinimized && 'minimized-section'
-      } ${isSelected && 'selected-section'} ${isHidden && 'hidden'}`}
+      className={`instrument-section${
+        isMinimized ? ' minimized-section' : ''
+      }${isSelected ? ' selected-section' : ''}${
+        isHidden ? ' hidden' : ''
+      }`}
       style={{ left: leftPosition }}
     >
       <BoardTitle

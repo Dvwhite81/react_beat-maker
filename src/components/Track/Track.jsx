@@ -29,7 +29,7 @@ function Track({
     if (volumeClass === ' hidden') {
       setVolumeClass('');
       setMuteClass(' hidden');
-      setVolume(1);
+      setVolume(100);
     } else {
       setVolumeClass(' hidden');
       setMuteClass('');

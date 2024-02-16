@@ -32,6 +32,8 @@ function ToneSquare({
       const newWidth = getNewWidth(value, beatLength);
       console.log('newWidth:', newWidth);
       setWidthClass(newWidth);
+    } else {
+      setWidthClass('');
     }
   };
 
