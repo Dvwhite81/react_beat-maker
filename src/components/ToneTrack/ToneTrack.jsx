@@ -6,24 +6,26 @@ function ToneTrack({
   option,
   currentBeat,
   totalBeats,
+  beatDivision,
   isPlaying,
   useFlats,
   toggleSelected,
 }) {
   const { name, displayName, displayFlatName } = option;
-  console.log('tonetrack useFlats:', useFlats);
-  console.log('tonetrack option:', option);
+  console.log('option:', option);
 
-  const playSound = () => {
-    playTone(name, '8n');
+  const playSound = (length) => {
+    console.log('playSound length:', length);
+    playTone(name, `${length}n`);
   };
 
   const isTone = true;
   const squares = getSquares(
     isTone,
     playSound,
-    totalBeats,
     currentBeat,
+    totalBeats,
+    beatDivision,
     isPlaying,
   );
 
@@ -33,7 +35,7 @@ function ToneTrack({
         <button
           type="button"
           className="btn track-select-btn"
-          onClick={playSound}
+          onClick={() => playSound(8)}
         >
           <p className="track-label">
             {useFlats ? displayFlatName : displayName}

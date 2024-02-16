@@ -2,6 +2,7 @@
   border: 1px solid;
   max-width: 90vw;
   overflow-x: scroll;
+  width: 100%;
 }
 
 .board-title {
@@ -33,5 +34,3 @@
   height: 100%;
   right: 0;
 }
-
-

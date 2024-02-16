@@ -1,5 +1,6 @@
 .track {
   border: 1px solid;
+  width: fit-content;
 }
 
 .track,
@@ -27,7 +28,6 @@
   position: relative;
 }
 
-/* new */
 .track-control:hover {
   background-color: black;
   color: whitesmoke;
@@ -67,7 +67,12 @@
 }
 
 button.btn.track-select-btn {
+  height: calc(var(--small-square-size) - 2px);
   width: 100%;
+}
+
+.selected-section button.btn.track-select-btn {
+  height: calc(var(--large-square-size) - 2px);
 }
 
 button.btn.track-select-btn:hover {
@@ -90,4 +95,8 @@ button.select-option-btn:hover {
 .track-control .icon {
   height: 70%;
   margin: auto;
+}
+
+.mute-btn {
+  margin-left: 0.5rem;
 }

@@ -7,6 +7,7 @@ function InstrumentSection({
   instrument,
   currentBeat,
   totalBeats,
+  beatDivision,
   isPlaying,
   oneIsSelected,
   selectedType,
@@ -28,31 +29,31 @@ function InstrumentSection({
     }
   }, [oneIsSelected, selectedType, type]);
 
-  if (!isHidden)
-    return (
-      <div
-        id={`${type}-section`}
-        className={`instrument-section ${
-          isMinimized && 'minimized-section'
-        } ${isSelected && 'selected-section'}`}
-        style={{ left: leftPosition }}
-      >
-        <BoardTitle
-          instrument={instrument}
-          isMinimized={isMinimized}
-          setIsMinimized={setIsMinimized}
-          isSelected={isSelected}
-          setIsSelected={setIsSelected}
-          setSelectedType={setSelectedType}
-        />
-        <Board
-          instrument={instrument}
-          currentBeat={currentBeat}
-          totalBeats={totalBeats}
-          isPlaying={isPlaying}
-        />
-      </div>
-    );
+  return (
+    <div
+      id={`${type}-section`}
+      className={`instrument-section ${
+        isMinimized && 'minimized-section'
+      } ${isSelected && 'selected-section'} ${isHidden && 'hidden'}`}
+      style={{ left: leftPosition }}
+    >
+      <BoardTitle
+        instrument={instrument}
+        isMinimized={isMinimized}
+        setIsMinimized={setIsMinimized}
+        isSelected={isSelected}
+        setIsSelected={setIsSelected}
+        setSelectedType={setSelectedType}
+      />
+      <Board
+        instrument={instrument}
+        currentBeat={currentBeat}
+        totalBeats={totalBeats}
+        beatDivision={beatDivision}
+        isPlaying={isPlaying}
+      />
+    </div>
+  );
 }
 
 export default InstrumentSection;

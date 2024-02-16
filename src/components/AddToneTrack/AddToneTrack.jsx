@@ -7,19 +7,13 @@ function AddToneTrack({
   choices,
   currentBeat,
   totalBeats,
+  beatDivision,
   isPlaying,
+  selectedTones,
+  toggleSelected,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedTones, setSelectedTones] = useState([]);
   const [useFlats, setUseFlats] = useState(false);
-
-  const toggleSelected = (option) => {
-    if (selectedTones.includes(option)) {
-      setSelectedTones(selectedTones.filter((t) => t !== option));
-    } else {
-      setSelectedTones([...selectedTones, option]);
-    }
-  };
 
   return (
     <>
@@ -39,6 +33,7 @@ function AddToneTrack({
           option={o}
           currentBeat={currentBeat}
           totalBeats={totalBeats}
+          beatDivision={beatDivision}
           isPlaying={isPlaying}
           useFlats={useFlats}
           toggleSelected={toggleSelected}

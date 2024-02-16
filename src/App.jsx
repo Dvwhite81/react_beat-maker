@@ -55,6 +55,7 @@ function App() {
         isPlaying={isPlaying}
         currentBeat={currentBeat}
         totalBeats={totalBeats}
+        beatDivision={beatDivision}
       />
       <PlayBtn
         isPlaying={isPlaying}

@@ -17,10 +17,12 @@ function Square({ index, playSound, currentBeat, isPlaying }) {
   useEffect(() => {
     const soundShouldPlay = currentBeat === index;
 
-    if (isPlaying && isSelected && soundShouldPlay) {
+    if (isPlaying && soundShouldPlay) {
       setActiveClass('square-active');
-      // eslint-disable-next-line no-undef
-      playSound();
+      if (isSelected) {
+        // eslint-disable-next-line no-undef
+        playSound();
+      }
     } else {
       setActiveClass('');
     }

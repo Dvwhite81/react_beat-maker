@@ -18,8 +18,9 @@ const isValidNum = (num) => {
 const getSquares = (
   isTone,
   playSound,
-  totalBeats,
   currentBeat,
+  totalBeats,
+  beatDivision,
   isPlaying,
 ) => {
   const squares = [];
@@ -31,6 +32,7 @@ const getSquares = (
         index={i}
         playSound={playSound}
         currentBeat={currentBeat}
+        beatDivision={beatDivision}
         isPlaying={isPlaying}
       />
     ) : (

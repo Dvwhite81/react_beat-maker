@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { getSquares } from '../../scripts/helpers';
 import './Track.css';
 
-function Track({ choice, currentBeat, totalBeats, isPlaying }) {
+function Track({
+  choice,
+  currentBeat,
+  totalBeats,
+  beatDivision,
+  isPlaying,
+}) {
   const { name, displayName, options } = choice;
   const [soundToPlay, setSoundToPlay] = useState(options[0].soundSrc);
   const [selectClass, setSelectClass] = useState(' hidden');
@@ -49,8 +55,9 @@ function Track({ choice, currentBeat, totalBeats, isPlaying }) {
   const squares = getSquares(
     isTone,
     playSound,
-    totalBeats,
     currentBeat,
+    totalBeats,
+    beatDivision,
     isPlaying,
   );
 
