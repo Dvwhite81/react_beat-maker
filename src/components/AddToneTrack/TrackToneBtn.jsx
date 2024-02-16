@@ -1,9 +1,9 @@
-function TrackToneBtn({ openModal }) {
+function TrackToneBtn({ setModalVisible }) {
   return (
     <button
       type="button"
       className="btn track-select-btn"
-      onClick={openModal}
+      onClick={() => setModalVisible(true)}
     >
       <p className="track-label">Add Note</p>
     </button>

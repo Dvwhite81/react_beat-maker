@@ -3,26 +3,29 @@ import './ToneModal.css';
 
 function ToneModal({
   choices,
-  displayClass,
-  closeModal,
+  modalVisible,
+  setModalVisible,
   useFlats,
-  toggleFlats,
+  setUseFlats,
   selectedTones,
   toggleSelected,
 }) {
   return (
-    <div id="tone-modal" className={`modal${displayClass}`}>
+    <div
+      id="tone-modal"
+      className={`modal ${!modalVisible && 'hidden'}`}
+    >
       <button
         type="button"
         className="modal-close"
-        onClick={closeModal}
+        onClick={() => setModalVisible(false)}
       >
         x
       </button>
       <button
         type="button"
         className="modal-use-flats-btn"
-        onClick={toggleFlats}
+        onClick={() => setUseFlats((prev) => !prev)}
       >
         {useFlats ? 'Use Sharps' : 'Use Flats'}
       </button>
@@ -43,7 +46,7 @@ function ToneModal({
       <button
         type="button"
         className="modal-submit"
-        onClick={closeModal}
+        onClick={() => setModalVisible(false)}
       >
         Add Tones
       </button>

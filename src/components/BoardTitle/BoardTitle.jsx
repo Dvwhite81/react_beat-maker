@@ -23,6 +23,7 @@ function BoardTitle({
   const toggleExpand = () => {
     setExpanded((prev) => !prev);
     if (isMinimized) {
+      setMinimized(false);
       setIsMinimized(false);
     }
     if (isSelected) {
