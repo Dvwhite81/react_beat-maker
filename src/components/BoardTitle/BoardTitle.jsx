@@ -1,85 +1,57 @@
 import { useState } from 'react';
+import ToggleIconBtn from '../ToggleIconBtn';
 import './BoardTitle.css';
 
 function BoardTitle({
   instrument,
-  toggleSectionMinimized,
-  toggleSectionSelected,
+  isMinimized,
+  setIsMinimized,
+  isSelected,
+  setIsSelected,
+  setSelectedType,
 }) {
-  const [addClass, setAddClass] = useState('hidden');
-  const [minusClass, setMinusClass] = useState('');
-  const [expandClass, setExpandClass] = useState('');
-  const [collapseClass, setCollapseClass] = useState('hidden');
+  const [minimized, setMinimized] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const { type, displayName } = instrument;
 
-  const toggleMinimizeIcon = () => {
-    if (addClass === 'hidden') {
-      setAddClass('');
-      setMinusClass('hidden');
-    } else {
-      setAddClass('hidden');
-      setMinusClass('');
-    }
-
-    toggleSectionMinimized();
+  const toggleMinimize = () => {
+    setMinimized((prev) => !prev);
+    setIsMinimized((prev) => !prev);
   };
 
-  const toggleExpandIcon = () => {
-    if (expandClass === '') {
-      setExpandClass('hidden');
-      setCollapseClass('');
-    } else {
-      setExpandClass('');
-      setCollapseClass('hidden');
+  const toggleExpand = () => {
+    setExpanded((prev) => !prev);
+    if (isMinimized) {
+      setIsMinimized(false);
     }
-
-    toggleSectionSelected();
+    if (isSelected) {
+      setSelectedType(null);
+    } else {
+      setSelectedType(type);
+    }
+    setIsSelected((prev) => !prev);
   };
 
   return (
     <div className="board-title">
-      <div className="left-title-icon-div">
-        <button
-          className="btn"
-          type="button"
-          onClick={() => toggleMinimizeIcon(type)}
-        >
-          <img
-            id={`${type}-add-icon`}
-            className={`icon add-icon ${addClass}`}
-            src="/images/add-icon.png"
-            alt="add icon"
-          />
-          <img
-            id={`${type}-minus-icon`}
-            className={`icon minus-icon ${minusClass}`}
-            src="/images/minus-icon.png"
-            alt="minus icon"
-          />
-        </button>
-      </div>
+      <ToggleIconBtn
+        divClass="left-title-icon-div"
+        btnClass="btn"
+        btnFunc={toggleMinimize}
+        conditional={minimized}
+        icon1="add-icon"
+        icon2="minus-icon"
+      />
       <h3 className="title-text">{displayName}</h3>
-      <div className="right-title-icon-div">
-        <button
-          className="btn"
-          type="button"
-          onClick={() => toggleExpandIcon(type)}
-        >
-          <img
-            id={`${type}-expand-icon`}
-            className={`icon expand-icon ${expandClass}`}
-            src="/images/expand-icon.png"
-            alt="expand icon"
-          />
-          <img
-            id={`${type}-collapse-icon`}
-            className={`icon collapse-icon ${collapseClass}`}
-            src="/images/collapse-icon.png"
-            alt="collapse icon"
-          />
-        </button>
-      </div>
+      <ToggleIconBtn
+        divClass="right-title-icon-div"
+        btnClass="btn"
+        btnFunc={toggleExpand}
+        conditional={expanded}
+        icon1="collapse-icon"
+        icon2="expand-icon"
+      />
     </div>
   );
 }

@@ -16,9 +16,7 @@ function PlayBtn({ isPlaying, setIsPlaying, play, stop }) {
         type="button"
         id="play-stop-btn"
         className="btn"
-        onClick={() => {
-          togglePlaying();
-        }}
+        onClick={togglePlaying}
       >
         {isPlaying ? 'Stop' : 'Play'}
       </button>

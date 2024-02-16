@@ -1,14 +1,10 @@
 import { useState } from 'react';
 
 function SettingsInfo() {
-  const [displayClass, setDisplayClass] = useState('hidden');
+  const [infoIsVisible, setInfoIsVisible] = useState(false);
 
   const toggleClass = () => {
-    if (displayClass === 'hidden') {
-      setDisplayClass('');
-    } else {
-      setDisplayClass('hidden');
-    }
+    setInfoIsVisible((prev) => !prev);
   };
   return (
     <>
@@ -20,15 +16,17 @@ function SettingsInfo() {
         onMouseEnter={toggleClass}
         onMouseLeave={toggleClass}
       />
-      <div id="settings-extra-text" className={displayClass}>
-        <div>Set Overall Speed</div>
-        <div>Set Number of Measures (Bars)</div>
-        <div>Set Number of Beats per Measure</div>
-        <div>
-          4 = sixteenth <br />
-          2 = eighth <br />1 = quarter
+      {infoIsVisible && (
+        <div id="settings-extra-text">
+          <div>Set Overall Speed</div>
+          <div>Set Number of Measures (Bars)</div>
+          <div>Set Number of Beats per Measure</div>
+          <div>
+            4 = sixteenth <br />
+            2 = eighth <br />1 = quarter
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
