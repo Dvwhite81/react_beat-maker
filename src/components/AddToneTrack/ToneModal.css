@@ -54,6 +54,19 @@
   flex-direction: column;
 }
 
+.modal-tone-section-text {
+  align-items: center;
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.modal-tone-section-text button.btn {
+  background-color: transparent!important;
+  display: flex;
+  height: 2vh;
+  justify-content: center;
+}
+
 .modal-tone-section-btns {
   display: grid;
   gap: 5px;
