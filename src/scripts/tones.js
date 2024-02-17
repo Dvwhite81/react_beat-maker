@@ -1,12 +1,8 @@
 import * as Tone from 'tone';
-
 // eslint-disable-next-line import/prefer-default-export
 export const playTone = (name, length, volumeValue = 100) => {
-  console.log('playTone length:', length);
-  console.log('playTone volumeValue:', volumeValue);
   const synth = new Tone.Synth().toDestination();
   synth.volume.value = -((100 - volumeValue) / 5);
-  console.log('synth.volume.value:', synth.volume.value);
   synth.triggerAttackRelease(name, length);
 };
 

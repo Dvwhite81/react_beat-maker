@@ -57,36 +57,49 @@ function Settings({
     setTiming(60000 / tempo / newBeatDivision);
     if (isPlaying) stop();
   };
+
+  const settings = [
+    {
+      type: 'tempo',
+      labelText: 'Tempo: ',
+      value: tempo,
+      setValue: updateTempo,
+      extraText: false,
+    },
+    {
+      type: 'numMeasures',
+      labelText: 'Measures: ',
+      value: numMeasures,
+      setValue: updateNumMeasures,
+      extraText: false,
+    },
+    {
+      type: 'numBeats',
+      labelText: 'Beats: ',
+      value: numBeats,
+      setValue: updateNumBeats,
+      extraText: false,
+    },
+    {
+      type: 'beatDivision',
+      labelText: 'Division: ',
+      value: beatDivision,
+      setValue: updateBeatDivision,
+      extraText: true,
+    },
+  ];
   return (
     <div id="settings">
-      <SettingsInput
-        type="tempo"
-        labelText="Tempo: "
-        value={tempo}
-        setValue={updateTempo}
-        extraText={false}
-      />
-      <SettingsInput
-        type="numMeasures"
-        labelText="Measures: "
-        value={numMeasures}
-        setValue={updateNumMeasures}
-        extraText={false}
-      />
-      <SettingsInput
-        type="numBeats"
-        labelText="Beats: "
-        value={numBeats}
-        setValue={updateNumBeats}
-        extraText={false}
-      />
-      <SettingsInput
-        type="beatDivision"
-        labelText="Division: "
-        value={beatDivision}
-        setValue={updateBeatDivision}
-        extraText
-      />
+      {settings.map((s) => (
+        <SettingsInput
+          key={s.type}
+          type={s.type}
+          labelText={s.labelText}
+          value={s.value}
+          setValue={s.setValue}
+          extraText={s.extraText}
+        />
+      ))}
       <SettingsInfo />
     </div>
   );

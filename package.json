@@ -37,6 +37,7 @@
     "html-react-parser": "^5.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tone": "^14.7.77"
+    "tone": "^14.7.77",
+    "tonejs-instrument-bass-electric": "^1.1.0"
   }
 }
