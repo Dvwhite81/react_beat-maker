@@ -28,14 +28,10 @@ function Square({ index, playSound, currentBeat, isPlaying }) {
     }
   }, [currentBeat, index, isPlaying, isSelected, playSound]);
 
-  const handleClick = () => {
-    setIsSelected((prev) => !prev);
-  };
-
   return (
     <div
       className={`square ${selectedClass} ${activeClass}`}
-      onClick={handleClick}
+      onClick={() => setIsSelected((prev) => !prev)}
     />
   );
 }

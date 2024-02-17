@@ -36,23 +36,27 @@ function BoardTitle({
 
   return (
     <div className="board-title">
-      <ToggleIconBtn
-        divClass="left-title-icon-div"
-        btnClass="btn"
-        btnFunc={toggleMinimize}
-        conditional={minimized}
-        icon1="add-icon"
-        icon2="minus-icon"
-      />
+      <div className="left-title-icon-div">
+        <ToggleIconBtn
+          btnClass="btn"
+          btnFunc={toggleMinimize}
+          handleMouseEnter={null}
+          conditional={minimized}
+          icon1="add-icon"
+          icon2="minus-icon"
+        />
+      </div>
       <h3 className="title-text">{displayName}</h3>
-      <ToggleIconBtn
-        divClass="right-title-icon-div"
-        btnClass="btn"
-        btnFunc={toggleExpand}
-        conditional={expanded}
-        icon1="collapse-icon"
-        icon2="expand-icon"
-      />
+      <div className="right-title-icon-div">
+        <ToggleIconBtn
+          btnClass="btn"
+          btnFunc={toggleExpand}
+          handleMouseEnter={null}
+          conditional={expanded}
+          icon1="collapse-icon"
+          icon2="expand-icon"
+        />
+      </div>
     </div>
   );
 }

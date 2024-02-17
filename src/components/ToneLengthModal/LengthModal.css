@@ -1,0 +1,50 @@
+button.show-length-btn {
+    background-color: transparent;
+    border: none;
+    bottom: 100%;
+    color: whitesmoke;
+    display: flex;
+    height: 50%;
+    right: 0;
+    position: absolute;
+    transform: translate(-50%);
+    width: 50%;
+    z-index: 1;
+}
+
+button.show-length-btn:hover {
+    background-color: whitesmoke;
+    border-radius: 50%;
+}
+
+.tone-square-length-modal {
+    background: var(--gradient-bg);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    position: absolute;
+    height: 40vh;
+    justify-content: space-evenly;
+    padding: 1rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    z-index: 5;
+}
+
+.tone-track button.modal-close {
+    position: absolute;
+    top: 5%;
+}
+
+.length-modal-radio-btns {
+    display: flex;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.tone-length-radio {
+    display: flex;
+    flex-direction: column;
+}

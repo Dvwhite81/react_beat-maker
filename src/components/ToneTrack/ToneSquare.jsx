@@ -1,11 +1,9 @@
 import { useState } from 'react';
+import { getInitialLength, getNewWidth } from '../../scripts/tones';
+import LengthModal from '../ToneLengthModal/LengthModal';
+import ShowModalBtn from '../ToneLengthModal/ShowModalBtn';
 import Square from '../Square/Square';
-import {
-  getInitialLength,
-  getNewWidth,
-  isValidLength,
-  lengthOptions,
-} from '../../scripts/tones';
+import './ToneSquare.css';
 
 function ToneSquare({
   index,
@@ -25,12 +23,9 @@ function ToneSquare({
 
   const handleLength = (value) => {
     value = parseInt(value, 10);
-    console.log('handleLength value:', value);
     setLength(value);
     if (value !== beatLength) {
-      console.log('value !== beatLength');
       const newWidth = getNewWidth(value, beatLength);
-      console.log('newWidth:', newWidth);
       setWidthClass(newWidth);
     } else {
       setWidthClass('');
@@ -63,77 +58,6 @@ function ToneSquare({
         />
       </div>
     </>
-  );
-}
-
-function ShowModalBtn({ setModalIsVisible }) {
-  return (
-    <button
-      type="button"
-      className="show-length-btn"
-      onClick={() => setModalIsVisible(true)}
-    >
-      <img
-        className="icon question-icon"
-        src="/images/question-icon.png"
-        alt="question icon"
-      />
-    </button>
-  );
-}
-
-function LengthModal({
-  setModalIsVisible,
-  length,
-  handleLength,
-  beatDivision,
-}) {
-  return (
-    <div className="tone-square-length-modal">
-      <button
-        type="button"
-        className="modal-close"
-        onClick={() => setModalIsVisible(false)}
-      >
-        x
-      </button>
-      <p>Set Length: </p>
-      <div className="length-modal-radio-btns">
-        {lengthOptions
-          .filter((o) => isValidLength(o, beatDivision))
-          .map((o) => (
-            <LengthRadio
-              key={o.label}
-              option={o}
-              length={length}
-              handleLength={handleLength}
-            />
-          ))}
-      </div>
-    </div>
-  );
-}
-
-function LengthRadio({ option, length, handleLength }) {
-  const [checked, setChecked] = useState(length === value);
-  const { label, value } = option;
-
-  const isChecked = length === value || checked;
-
-  return (
-    <label className="tone-length-radio" htmlFor="whole-note">
-      {label}
-      <input
-        type="radio"
-        name="whole-note"
-        value={value}
-        onChange={({ target }) => {
-          handleLength(target.value);
-          setChecked(true);
-        }}
-        checked={isChecked}
-      />
-    </label>
   );
 }
 

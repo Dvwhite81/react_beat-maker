@@ -1,0 +1,49 @@
+.tone-square {
+    overflow: visible;
+    position: relative;
+    width: var(--small-square-size);
+}
+
+.selected-section .tone-square {
+    width: var(--large-square-size);
+}
+
+.tone-square.two-width .square,
+.tone-square.four-width .square,
+.tone-square.eight-width .square,
+.tone-square.sixteen-width .square {
+    position: relative;
+    z-index: 1;
+}
+
+.tone-square.two-width .square {
+    width: calc(var(--small-square-size) * 2);
+}
+
+.selected-section .tone-square.two-width .square {
+    width: calc(var(--large-square-size) * 2);
+}
+
+.tone-square.four-width .square {
+    width: calc(var(--small-square-size) * 4);
+}
+
+.selected-section .tone-square.four-width .square {
+    width: calc(var(--large-square-size) * 4);
+}
+
+.tone-square.eight-width .square {
+    width: calc(var(--small-square-size) * 8);
+}
+
+.selected-section .tone-square.eight-width .square {
+    width: calc(var(--large-square-size) * 8);
+}
+
+.tone-square.sixteen-width .square {
+    width: calc(var(--small-square-size) * 16);
+}
+
+.selected-section .tone-square.sixteen-width .square {
+    width: calc(var(--large-square-size) * 16);
+}
