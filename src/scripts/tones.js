@@ -52,14 +52,6 @@ export const getInitialLength = (beatDivision) => {
 export const isValidLength = (option, beatDivision) => {
   const { value } = option;
 
-  /*
-  return (
-    beatDivision === 4 ||
-    (beatDivision === 2 && value !== 16) ||
-    (beatDivision === 1 && value !== 16 && value !== 8)
-  );
-  */
-
   if (beatDivision === 4) {
     return true;
   }

@@ -12,14 +12,17 @@ function InstrumentSection({
   oneIsSelected,
   selectedType,
   setSelectedType,
+  numMinimized,
+  setNumMinimized,
   index,
 }) {
   const [isMinimized, setIsMinimized] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [shouldExpandClass, setShouldExpandClass] = useState('');
 
   const { type } = instrument;
-  const leftPosition = `${index * 30}vw`;
+  const leftPosition = `${index * 25}vw`;
 
   useEffect(() => {
     if (oneIsSelected && selectedType !== type) {
@@ -29,6 +32,18 @@ function InstrumentSection({
     }
   }, [oneIsSelected, selectedType, type]);
 
+  useEffect(() => {
+    if (
+      (type === 'drums' && numMinimized > 0 && !isMinimized) ||
+      numMinimized === 2 ||
+      (numMinimized === 3 && !isMinimized)
+    ) {
+      setShouldExpandClass(' double-width-section');
+    } else {
+      setShouldExpandClass('');
+    }
+  }, [type, numMinimized, isMinimized]);
+
   return (
     <div
       id={`${type}-section`}
@@ -36,7 +51,7 @@ function InstrumentSection({
         isMinimized ? ' minimized-section' : ''
       }${isSelected ? ' selected-section' : ''}${
         isHidden ? ' hidden' : ''
-      }`}
+      }${shouldExpandClass}`}
       style={{ left: leftPosition }}
     >
       <BoardTitle
@@ -46,6 +61,7 @@ function InstrumentSection({
         isSelected={isSelected}
         setIsSelected={setIsSelected}
         setSelectedType={setSelectedType}
+        setNumMinimized={setNumMinimized}
       />
       <Board
         instrument={instrument}

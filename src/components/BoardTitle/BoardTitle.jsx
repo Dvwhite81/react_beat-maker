@@ -9,6 +9,7 @@ function BoardTitle({
   isSelected,
   setIsSelected,
   setSelectedType,
+  setNumMinimized,
 }) {
   const [minimized, setMinimized] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -16,6 +17,11 @@ function BoardTitle({
   const { type, displayName } = instrument;
 
   const toggleMinimize = () => {
+    if (isMinimized) {
+      setNumMinimized((prev) => prev - 1);
+    } else {
+      setNumMinimized((prev) => prev + 1);
+    }
     setMinimized((prev) => !prev);
     setIsMinimized((prev) => !prev);
   };
@@ -25,6 +31,7 @@ function BoardTitle({
     if (isMinimized) {
       setMinimized(false);
       setIsMinimized(false);
+      setNumMinimized((prev) => prev - 1);
     }
     if (isSelected) {
       setSelectedType(null);

@@ -11,6 +11,11 @@ function AllSections({
 }) {
   const [oneIsSelected, setOneIsSelected] = useState(false);
   const [selectedType, setSelectedType] = useState(null);
+  const [numMinimized, setNumMinimized] = useState(0);
+  const [gridStyle, setGridStyle] = useState({
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateRows: 'repeat(2, 40vh)',
+  });
 
   useEffect(() => {
     if (selectedType) {
@@ -20,8 +25,22 @@ function AllSections({
     }
   }, [selectedType]);
 
+  useEffect(() => {
+    if (numMinimized === 2) {
+      setGridStyle({
+        gridTemplateColumns: 'none',
+        gridTemplateRows: 'repeat(2, 40vh)',
+      });
+    } else {
+      setGridStyle({
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridTemplateRows: 'repeat(2, 40vh)',
+      });
+    }
+  }, [numMinimized]);
+
   return (
-    <div id="all-instruments">
+    <div id="all-instruments" style={gridStyle}>
       <InstrumentSection
         instrument={DRUMS}
         currentBeat={currentBeat}
@@ -31,6 +50,8 @@ function AllSections({
         oneIsSelected={oneIsSelected}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
+        numMinimized={numMinimized}
+        setNumMinimized={setNumMinimized}
         index={0}
       />
       {INSTRUMENTS.map((i, index) => (
@@ -44,6 +65,8 @@ function AllSections({
           oneIsSelected={oneIsSelected}
           selectedType={selectedType}
           setSelectedType={setSelectedType}
+          numMinimized={numMinimized}
+          setNumMinimized={setNumMinimized}
           index={index + 1}
         />
       ))}
